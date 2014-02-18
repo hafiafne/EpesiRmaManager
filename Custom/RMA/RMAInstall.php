@@ -34,70 +34,62 @@ class Custom_RMAInstall extends ModuleInstall {
 						'type' => 'select',			//Type of Field
 						'visible' => true,			//shows on the Table View
 						'filter' => false,			//Can you Filter it?
-						'param' => "company::Company Name;::"	//if Select Field, What do we Select?
-	
-				 ),
-				 array(	
-						'name' => 'Phone Number',				//Name of the Field
-						'type' => 'calculated',			//Type of Field
-						'visible' => true,			//shows on the Table View
-						'filter' => false,			//Can you Filter it?
-						'param' =>  Utils_RecordBrowserCommon::actual_db_type('text', '20')	//if Calculated, this creates a DB field
-	
+						'param'=>"contact::Customer;",
+						'required' => true
 				 ),
 				array(	
 						'name' => 'Manufacturer',				//Name of the Field
 						'type' => 'select',			//Type of Field
 						'visible' => true,			//shows on the Table View
 						'filter' => false,			//Can you Filter it?
-						'param' => "company::Company Name;::"	//if Select Field, What do we Select?
-	
+						'param' => "company::Company Name;",	//if Select Field, What do we Select?
+						'required' => true
 				 ),
 				 array(	
 						'name' => 'Device SKU',				//Name of the Field
 						'type' => 'text',			//Type of Field
 						'visible' => true,			//shows on the Table View
-						'filter' => false,			//Can you Filter it?
-						'param' => 64	//ifText Field, how long?
-	
+						'filter' => true,			//Can you Filter it?
+						'param' => 64,	//ifText Field, how long?
+						'required' => true
 				 ),
 				 array(	
 						'name' => 'Device Model',				//Name of the Field
 						'type' => 'text',			//Type of Field
 						'visible' => true,			//shows on the Table View
-						'filter' => false,			//Can you Filter it?
-						'param' => 64	//ifText Field, how long?
-	
+						'filter' => true,			//Can you Filter it?
+						'param' => 64,	//ifText Field, how long?
+						'required' => true
 				 ),
 				 array(	
 						'name' => 'Device Serial Number',				//Name of the Field
 						'type' => 'text',			//Type of Field
 						'visible' => true,			//shows on the Table View
 						'filter' => false,			//Can you Filter it?
-						'param' => 64	//ifText Field, how long?
-	
+						'param' => 64,	//ifText Field, how long?
+						'required' => true
 				 ),
 				 array(	
 						'name' => 'Request Date',				//Name of the Field
 						'type' => 'date',			//Type of Field
 						'visible' => true,			//shows on the Table View
-						'filter' => true			//Can you Filter it?
-	
+						'filter' => false,			//Can you Filter it?
+						'required' => true
 				 ),
 				 array(	
 						'name' => 'Package Status',				//Name of the Field
 						'type' => 'commondata',			//Type of Field
 						'visible' => true,			//shows on the Table View
-						'filter' => true,			//Can you Filter it?
-						'param' => array('order_by_key'=>false, 'custom/rma/package_status')  //Order by Name and which common data to access?
-	
+						'filter' => false,			//Can you Filter it?
+						'param' => array('order_by_key'=>false, 'custom/rma/package_status'),  //Order by Name and which common data to access?
+						'required ' => true
 				 ),
 				 array(	
 						'name' => 'Package Description',				//Name of the Field
-						'type' => 'long text',			//Type of Field
+						'type' => 'text',			//Type of Field
 						'visible' => false,			//shows on the Table View
-						'filter' => false			//Can you Filter it?
-	
+						'filter' => false,			//Can you Filter it?
+						'param' => 64
 				 ),
 				 array(	
 						'name' => 'Fault Declared from Customer',				//Name of the Field
@@ -117,17 +109,17 @@ class Custom_RMAInstall extends ModuleInstall {
 						'name' => 'Status',				//Name of the Field
 						'type' => 'commondata',			//Type of Field
 						'visible' => true,			//shows on the Table View
-						'filter' => true,			//Can you Filter it?
-						'param' => array('order_by_key'=>false, 'custom/rma/status')
-	
+						'filter' => false,			//Can you Filter it?
+						'param' => array('order_by_key'=>true, 'custom/rma/status'),
+						'required' => true
 				 ),
 				 array(	
 						'name' => 'Priority',				//Name of the Field
 						'type' => 'commondata',			//Type of Field
 						'visible' => true,			//shows on the Table View
 						'filter' => true,			//Can you Filter it?
-						'param' => array('order_by_key'=>false, 'custom/rma/priority')
-	
+						'param' => array('order_by_key'=>true, 'custom/rma/priority')
+						
 				 ),
 				 array(	
 						'name' => 'Limit Date',				//Name of the Field
