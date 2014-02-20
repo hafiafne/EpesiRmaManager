@@ -163,7 +163,17 @@ class Custom_RMAInstall extends ModuleInstall {
 	}
  
 	public function requires($v) {
-		return array();
+		return array(
+			array('name'=>'Utils/RecordBrowser', 'version'=>0),
+			array('name'=>'Utils/Attachment', 'version'=>0),
+			array('name'=>'CRM/Common', 'version'=>0),
+			array('name'=>'CRM/Contacts', 'version'=>0),
+			array('name'=>'Base/Lang', 'version'=>0),
+			array('name'=>'Base/Acl', 'version'=>0),
+			array('name'=>'CRM/Filters','version'=>0),
+			array('name'=>'Libs/QuickForm','version'=>0),
+			array('name'=>'Base/Theme','version'=>0)
+		);
 	}
  
 	public function version() {
