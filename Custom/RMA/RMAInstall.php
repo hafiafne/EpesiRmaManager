@@ -5,12 +5,7 @@ class Custom_RMAInstall extends ModuleInstall {
 
 	public function install() {
 		
-	/*	Base_ThemeCommon::install_default_theme($this->get_type());  
-		$fields = new Custom_RMA_Recordset();
-		$success = $fields->install();
-		$fields->add_default_access();
-		$fields->set_caption(_M('RMA'));
-		return true;
+	/*
 		
 		JJ's Notes:  This is for RBO which I feel is is poorly documented compared to the RB Utility (and of course, I studied RB more than RBO)
 					This is how it's done in RB:  
@@ -30,23 +25,23 @@ class Custom_RMAInstall extends ModuleInstall {
 	
 				 ),
 				array(	
-						'name' => 'Customer',				//Name of the Field
-						'type' => 'select',			//Type of Field
+						'name' => _M('Customer'),				//Name of the Field
+						'type' => 'crm_company_contact', //Type of Field
 						'visible' => true,			//shows on the Table View
 						'filter' => false,			//Can you Filter it?
-						'param'=>"contact::Customer;",
+						'param'=>array('field_type'=>'select'),
 						'required' => true
 				 ),
 				array(	
-						'name' => 'Manufacturer',				//Name of the Field
-						'type' => 'select',			//Type of Field
+						'name' => _M('Manufacturer'),				//Name of the Field
+						'type' => 'crm_company',			//Type of Field
 						'visible' => true,			//shows on the Table View
 						'filter' => false,			//Can you Filter it?
-						'param' => "company::Company Name;",	//if Select Field, What do we Select?
+						'param' => array('field_type'=>'select'),	//if Select Field, What do we Select?
 						'required' => true
 				 ),
 				 array(	
-						'name' => 'Device SKU',				//Name of the Field
+						'name' => _M('Device SKU'),				//Name of the Field
 						'type' => 'text',			//Type of Field
 						'visible' => true,			//shows on the Table View
 						'filter' => true,			//Can you Filter it?
@@ -54,7 +49,7 @@ class Custom_RMAInstall extends ModuleInstall {
 						'required' => true
 				 ),
 				 array(	
-						'name' => 'Device Model',				//Name of the Field
+						'name' => _M('Device Model'),				//Name of the Field
 						'type' => 'text',			//Type of Field
 						'visible' => true,			//shows on the Table View
 						'filter' => true,			//Can you Filter it?
@@ -62,7 +57,7 @@ class Custom_RMAInstall extends ModuleInstall {
 						'required' => true
 				 ),
 				 array(	
-						'name' => 'Device Serial Number',				//Name of the Field
+						'name' => _M('Device Serial Number'),				//Name of the Field
 						'type' => 'text',			//Type of Field
 						'visible' => true,			//shows on the Table View
 						'filter' => false,			//Can you Filter it?
@@ -70,14 +65,14 @@ class Custom_RMAInstall extends ModuleInstall {
 						'required' => true
 				 ),
 				 array(	
-						'name' => 'Request Date',				//Name of the Field
+						'name' => _M('Request Date'),				//Name of the Field
 						'type' => 'date',			//Type of Field
 						'visible' => true,			//shows on the Table View
 						'filter' => false,			//Can you Filter it?
 						'required' => true
 				 ),
 				 array(	
-						'name' => 'Package Status',				//Name of the Field
+						'name' => _M('Package Status'),				//Name of the Field
 						'type' => 'commondata',			//Type of Field
 						'visible' => true,			//shows on the Table View
 						'filter' => false,			//Can you Filter it?
@@ -85,28 +80,28 @@ class Custom_RMAInstall extends ModuleInstall {
 						'required ' => true
 				 ),
 				 array(	
-						'name' => 'Package Description',				//Name of the Field
+						'name' => _M('Package Description'),				//Name of the Field
 						'type' => 'text',			//Type of Field
 						'visible' => false,			//shows on the Table View
 						'filter' => false,			//Can you Filter it?
 						'param' => 64
 				 ),
 				 array(	
-						'name' => 'Fault Declared from Customer',				//Name of the Field
+						'name' => _M('Fault Declared from Customer'),				//Name of the Field
 						'type' => 'long text',			//Type of Field
 						'visible' => false,			//shows on the Table View
 						'filter' => false			//Can you Filter it?
 	
 				 ),
 				 array(	
-						'name' => 'Fault Revealed',				//Name of the Field
+						'name' => _M('Fault Revealed'),				//Name of the Field
 						'type' => 'long text',			//Type of Field
 						'visible' => false,			//shows on the Table View
 						'filter' => false			//Can you Filter it?
 	
 				 ),
 				 array(	
-						'name' => 'Status',				//Name of the Field
+						'name' => _M('Status'),				//Name of the Field
 						'type' => 'commondata',			//Type of Field
 						'visible' => true,			//shows on the Table View
 						'filter' => false,			//Can you Filter it?
@@ -114,7 +109,7 @@ class Custom_RMAInstall extends ModuleInstall {
 						'required' => true
 				 ),
 				 array(	
-						'name' => 'Priority',				//Name of the Field
+						'name' => _M('Priority'),				//Name of the Field
 						'type' => 'commondata',			//Type of Field
 						'visible' => true,			//shows on the Table View
 						'filter' => true,			//Can you Filter it?
@@ -122,7 +117,7 @@ class Custom_RMAInstall extends ModuleInstall {
 						
 				 ),
 				 array(	
-						'name' => 'Limit Date',				//Name of the Field
+						'name' => _M('Limit Date'),				//Name of the Field
 						'type' => 'date',			//Type of Field
 						'visible' => true,			//shows on the Table View
 						'filter' => true			//Can you Filter it?
@@ -140,10 +135,7 @@ class Custom_RMAInstall extends ModuleInstall {
 	}
  
 	public function uninstall() {
-	/*	Base_ThemeCommon::uninstall_default_theme(this->get_type());
-		$fields = new Custom_RMA_Recordset();
-		$success = $fields->uninstall();
-	*/
+
 		Utils_RecordBrowserCommon::unregister_processing_callback("custom_rma", "Custom_RMACommon::getData");
 		Utils_RecordBrowserCommon::uninstall_recordset('custom_rma'); //remove DB and Module
 		
