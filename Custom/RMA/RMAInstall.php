@@ -5,12 +5,7 @@ class Custom_RMAInstall extends ModuleInstall {
 
 	public function install() {
 		
-	/*	Base_ThemeCommon::install_default_theme($this->get_type());  
-		$fields = new Custom_RMA_Recordset();
-		$success = $fields->install();
-		$fields->add_default_access();
-		$fields->set_caption(_M('RMA'));
-		return true;
+	/*
 		
 		JJ's Notes:  This is for RBO which I feel is is poorly documented compared to the RB Utility (and of course, I studied RB more than RBO)
 					This is how it's done in RB:  
@@ -140,10 +135,7 @@ class Custom_RMAInstall extends ModuleInstall {
 	}
  
 	public function uninstall() {
-	/*	Base_ThemeCommon::uninstall_default_theme(this->get_type());
-		$fields = new Custom_RMA_Recordset();
-		$success = $fields->uninstall();
-	*/
+
 		Utils_RecordBrowserCommon::unregister_processing_callback("custom_rma", "Custom_RMACommon::getData");
 		Utils_RecordBrowserCommon::uninstall_recordset('custom_rma'); //remove DB and Module
 		
