@@ -151,7 +151,10 @@ class Custom_RMAInstall extends ModuleInstall {
  
 	public function uninstall() {
 		
+		
 		Utils_AttachmentCommon::delete_addon('custom_rma');
+		Utils_RecordBrowserCommon::delete_addon('custom_rma');
+		
 		Base_ThemeCommon::uninstall_default_theme('Custom/RMA');
 		Utils_RecordBrowserCommon::unregister_processing_callback('custom_rma', 'Custom_RMACommon::process_request');
 		//Utils_RecordBrowserCommon::unregister_processing_callback('custom_rma', 'Custom_RMACommon::getData');
