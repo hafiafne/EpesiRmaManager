@@ -133,18 +133,26 @@ class Custom_RMAInstall extends ModuleInstall {
 		//Utils_RecordBrowserCommon::new_addon('company', 'Custom/RMA', 'RMA_addon', _M('RMA')); //show in the Company Page the RMA Module
 		//Utils_RecordBrowserCommon::register_processing_callback('custom_rma', 'Custom_RMACommon::getData');
 		
+		/* Access Control */
 		Utils_RecordBrowserCommon::add_access('custom_rma', 'view',   'ACCESS:employee', array('(!permission'=>2, '|employees'=>'USER'));
 		Utils_RecordBrowserCommon::add_access('custom_rma', 'add',    'ACCESS:employee');
 		Utils_RecordBrowserCommon::add_access('custom_rma', 'edit',   'ACCESS:employee', array('(permission'=>0, '|employees'=>'USER', '|customers'=>'USER'));
 		Utils_RecordBrowserCommon::add_access('custom_rma', 'delete', 'ACCESS:employee', array(':Created_by'=>'USER_ID'));
 		Utils_RecordBrowserCommon::add_access('custom_rma', 'delete',  array('ACCESS:employee','ACCESS:manager'));
 
+
+		/* add-ons */
+		Utils_AttachmentCommon::new_addon('custom_rma');
+		Utils_RecordBrowserCommon::new_addon('custom_rma', 'CRM/RMA', 'messanger_addon', _M('Alerts'));
 		
 		return true; //False on failure
 		
 	}
  
 	public function uninstall() {
+		
+		Utils_AttachmentCommon::delete_addon('custom_rma');
+		Base_ThemeCommon::uninstall_default_theme('Custom/RMA');
 		Utils_RecordBrowserCommon::unregister_processing_callback('custom_rma', 'Custom_RMACommon::process_request');
 		//Utils_RecordBrowserCommon::unregister_processing_callback('custom_rma', 'Custom_RMACommon::getData');
 		Utils_RecordBrowserCommon::uninstall_recordset('custom_rma'); //remove DB and Module
