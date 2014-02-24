@@ -53,7 +53,7 @@ class Custom_RMAInstall extends ModuleInstall {
 				 array(	
 						'name' => _M('Device Model'),				//Name of the Field
 						'type' => 'text',			//Type of Field
-						'visible' => false,			//shows on the Table View
+						'visible' => true,			//shows on the Table View
 						'filter' => false,			//Can you Filter it?
 						'param' => 32,	//ifText Field, how long?
 						'required' => true
