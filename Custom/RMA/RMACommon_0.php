@@ -28,14 +28,32 @@ class Custom_RMACommon extends ModuleCommon {
                 $data['active']=true;
                 break;
             case 'added':
-				Utils_RecordBrowserCommon::update_record('custom_rma',$data['id'],array('rma_id'=>self::generate_id($data['request_date'], $data['id'])), false, null, true);
+		Utils_RecordBrowserCommon::update_record('custom_rma',$data['id'],array('rma_id'=>self::generate_id($data['request_date'], $data['id'])), false, null, true);
                 break;
             default:
                 break;
         }
         return $data;
     }
+    
+   	// label watchdog 
+	public static function watchdog_label($rid = null, $events = array(), $details = true) {
+		return Utils_RecordBrowserCommon::watchdog_label(
+				'custom_rma',
+				_M('RMA'),
+				$rid,
+				$events,
+				array('Custom_RMACommon','watchdog_label_format'),
+				$details
+			);
+	}
 	
+	public static function watchdog_label_format($r) {
+		return $r['rma_id']; //.': '.$r['title'];
+	}
+    
+	
+	/*
 	// function to search in records. This build up query string and return records found
 	public static function search($word){
         $ret = array();
@@ -60,7 +78,10 @@ class Custom_RMACommon extends ModuleCommon {
         }
 
         return $ret;
-    }
+    }*/
+    
+    
+    
 }
  
 ?>
